@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import ProductList from './components/productList/ProductList';
+import Cart from './components/cart/Cart';
+import "./App.css";
+import DrawerAppBar from "./components/navbar/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Orders from "./components/orders/Orders";
 
-function App() {
-  const [count, setCount] = useState(0)
+
+
+export default function App() {
+  const [cart, setCart] = useState([]); // State to manage the cart
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <DrawerAppBar />
+      <Routes>
+        {/* Pass `cart` and `setCart` as props */}
+        <Route path="/" element={<ProductList cart={cart} setCart={setCart} />} />
+        <Route path="/cart" element={<Cart product={cart} />} />
+        <Route path='/orders' element={<Orders />} />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App

@@ -8,7 +8,6 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import Box from "@mui/material/Box";
 
-
 export default function ProductCard() {
   const [products, setProducts] = useState([]);
 
@@ -28,9 +27,9 @@ export default function ProductCard() {
   }, []);
 
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent:"center" , width: "1000px", alignItems:"center"}}>
       {products.map((product) => (
-        <Card key={product.id} sx={{ maxWidth: 345 }}>
+        <Card  key={product.id} sx={{ maxWidth: 345 }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -52,23 +51,24 @@ export default function ProductCard() {
           </CardActionArea>
           <CardActions>
             <Button
+              sx={{ bgcolor: "#1976d2", color: "white" }}
               size="small"
               color="primary"
               onClick={async () => {
                 try {
                   const response = await fetch(
-                    "http://localhost:5132/api/Cart",
+                    "http://localhost:5132/api/Cart", 
                     {
-                      method: "POST", 
+                      method: "POST",
                       headers: {
-                        "Content-Type": "application/json", 
+                        "Content-Type": "application/json",
                       },
                       body: JSON.stringify({
                         productId: product.id,
                         productName: product.name,
                         price: product.price,
                         quantity: 1,
-                      }), 
+                      }),
                     }
                   );
 

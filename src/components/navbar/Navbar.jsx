@@ -33,8 +33,8 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" , color:"GrayText"  , fontFamily:"sans-serif"}}>
+      <Typography variant="h6" sx={{ my: 2 , fontFamily:"sans-serif", color:"GrayText" }}>
         TechHaven
       </Typography>
       <Divider />
@@ -45,7 +45,8 @@ function DrawerAppBar(props) {
               sx={{
                 textAlign: "center",
                 "&:hover": {
-                  backgroundColor: "rgba(0, 0, 0, 0.1)",
+                  backgroundColor: "#61b5ff",
+                  fontWeight: "semibold"
                 },
               }}
               onClick={() => navigate(item.path)}
@@ -70,38 +71,38 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" , }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: "#1E88E5" }}>
+      <AppBar component="nav" sx={{ backgroundColor: "whitesmoke" }}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, color:"GrayText",  display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{ flexGrow: 1,color:"GrayText", display: { xs: "none", sm: "block" } }}
           >
             TechHaven
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center" }}>
+          <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center", color:"GrayText" }}>
             {navItems.map((item) => (
               <IconButton
                 key={item.label}
                 onClick={() => navigate(item.path)}
                 sx={{
-                  color: "#fff",
+                  color: "GrayText",
                   fontSize: "0.875rem",
                   textTransform: "uppercase",
                   fontWeight: "bold",
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.2)",
+                    backgroundColor: "#71b2f3",
                   },
                   mx: 1,
                 }}
@@ -130,6 +131,7 @@ function DrawerAppBar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+
             },
           }}
         >

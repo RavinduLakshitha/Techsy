@@ -8,6 +8,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import Box from "@mui/material/Box";
 
+
 export default function ProductCard() {
   const [products, setProducts] = useState([]);
 
@@ -45,7 +46,7 @@ export default function ProductCard() {
                 Price: ${product.price}
               </Typography>
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                Available Quantity: {product.availableQuantity}
+                Available Quantity: {product.quantityInStock}
               </Typography>
             </CardContent>
           </CardActionArea>

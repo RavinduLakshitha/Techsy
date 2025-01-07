@@ -53,9 +53,21 @@ export default function Cart() {
     </div>
   );
 
-  function handleRemove(id) {
-    // Logic to handle item removal (e.g., API call to delete the item)
-    console.log(`Remove item with id: ${id}`);
-    setCartItems(cartItems.filter((item) => item.id !== id));
+  async function handleRemove(id) {
+    try {
+      const response = await fetch(`http://localhost:5132/api/Cart/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        console.log(`Successfully removed item with id: ${id}`);
+        // Update the cart items state to reflect the removal
+        setCartItems(cartItems.filter((item) => item.id !== id));
+      } else {
+        console.error(`Failed to remove item with id: ${id}, status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error(`Error removing item with id: ${id}`, error);
+    }
   }
 }

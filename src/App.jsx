@@ -5,7 +5,6 @@ import "./App.css";
 import DrawerAppBar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Orders from "./components/Orders";
-import Footer from "./components/footer";
 import { ToastContainer } from "react-toastify";
 
 
@@ -24,7 +23,7 @@ export default function App() {
         <Route path="/cart" element={<Cart product={cart} />} />
         <Route path="/orders" element={<Orders />} />
       </Routes>
-      <Footer />
+      
       <ToastContainer position="bottom-right"/>
     </Router>
   );

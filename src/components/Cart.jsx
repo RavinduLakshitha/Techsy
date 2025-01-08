@@ -40,7 +40,7 @@ export default function Cart() {
     dispatch(placeOrder(order));
     toast.success("Place order Successfully");
     dispatch(addOrders(order));
-    navigate('/order')
+    navigate('/orders')
   };
 
   // function to increment item quantity

@@ -6,6 +6,8 @@ import DrawerAppBar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Orders from "./components/Orders";
 import Footer from "./components/footer";
+import { ToastContainer } from "react-toastify";
+
 
 export default function App() {
   const [cart, setCart] = useState([]); // State to manage the cart
@@ -23,6 +25,7 @@ export default function App() {
         <Route path="/orders" element={<Orders />} />
       </Routes>
       <Footer />
+      <ToastContainer position="bottom-right"/>
     </Router>
   );
 }

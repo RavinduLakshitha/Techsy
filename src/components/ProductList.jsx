@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../redux/productSlice";
 import { addToCart, updateCartQuantity } from "../redux/cartSlice";
-import Lapimg from "../../assets/laptop.jpg";
+import Lapimg from "../assets/laptop.jpg";
 import Hero from "./Hero";
 
 export default function ProductCard() {

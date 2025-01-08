@@ -12,7 +12,7 @@ import {
   removeFromCart,
   updateCartQuantity,
 } from "../redux/cartSlice";
-import Lapimg from "../../assets/laptop.jpg";
+import Lapimg from "../assets/laptop.jpg";
 
 export default function Cart() {
   const { cartItems, total } = useSelector((state) => state.cartReducer);

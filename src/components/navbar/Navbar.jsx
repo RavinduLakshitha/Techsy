@@ -33,9 +33,9 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        TechHaven
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" ,  color:"#2b2d42"  , fontFamily:"sans-serif"}}>
+      <Typography variant="h6" sx={{ my: 2 ,fontFamily:"sans-serif", color:"#2b2d42" }}>
+      Techsy
       </Typography>
       <Divider />
       <List>
@@ -45,7 +45,8 @@ function DrawerAppBar(props) {
               sx={{
                 textAlign: "center",
                 "&:hover": {
-                  backgroundColor: "rgba(0, 0, 0, 0.1)",
+                  bgcolor: "#f77f00",
+                  fontWeight: "semibold"
                 },
               }}
               onClick={() => navigate(item.path)}
@@ -70,38 +71,46 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" , }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: "#1E88E5" }}>
+      <AppBar component="nav" sx={{ backgroundColor: "#2b2d42" }}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, color:"whitesmoke",  display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{
+              flexGrow: 1,
+              color: "whitesmoke",
+              display: { xs: "none", sm: "block" },
+              textAlign: "left", 
+              fontFamily: "'Roboto', sans-serif", 
+              fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" },
+            }}
+F            
           >
-            TechHaven
+            Techsy
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center" }}>
+          <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center",  }}>
             {navItems.map((item) => (
               <IconButton
                 key={item.label}
                 onClick={() => navigate(item.path)}
                 sx={{
-                  color: "#fff",
+                  color: "whitesmoke",
                   fontSize: "0.875rem",
                   textTransform: "uppercase",
-                  fontWeight: "bold",
+                  
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.2)",
+                    color: "#f77f00",
                   },
                   mx: 1,
                 }}
@@ -130,6 +139,7 @@ function DrawerAppBar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+
             },
           }}
         >

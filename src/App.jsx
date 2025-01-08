@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import ProductList from './components/productList/ProductList';
-import Cart from './components/cart/Cart';
+import { useState } from "react";
+import ProductList from "./components/productList/ProductList";
+import Cart from "./components/cart/Cart";
 import "./App.css";
 import DrawerAppBar from "./components/navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Orders from "./components/orders/Orders";
-
-
+import Footer from "./components/footer";
 
 export default function App() {
   const [cart, setCart] = useState([]); // State to manage the cart
@@ -16,10 +15,14 @@ export default function App() {
       <DrawerAppBar />
       <Routes>
         {/* Pass `cart` and `setCart` as props */}
-        <Route path="/" element={<ProductList cart={cart} setCart={setCart} />} />
+        <Route
+          path="/"
+          element={<ProductList cart={cart} setCart={setCart} />}
+        />
         <Route path="/cart" element={<Cart product={cart} />} />
-        <Route path='/orders' element={<Orders />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

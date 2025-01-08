@@ -110,7 +110,7 @@ export default function Cart() {
               minWidth: "40px",
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "darkgray";
+              e.target.style.backgroundColor = "#e85d04";
               e.target.style.color = "white";
             }}
             onMouseLeave={(e) => {
@@ -136,7 +136,7 @@ export default function Cart() {
               minWidth: "40px",
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "darkgray";
+              e.target.style.backgroundColor = "#e85d04";
               e.target.style.color = "white";
             }}
             onMouseLeave={(e) => {

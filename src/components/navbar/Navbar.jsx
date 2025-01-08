@@ -33,9 +33,9 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" ,  color:"#f77f00"  , fontFamily:"sans-serif"}}>
-      <Typography variant="h6" sx={{ my: 2 ,fontFamily:"sans-serif", color:"#f77f00" }}>
-        TechHaven
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" ,  color:"#2b2d42"  , fontFamily:"sans-serif"}}>
+      <Typography variant="h6" sx={{ my: 2 ,fontFamily:"sans-serif", color:"#2b2d42" }}>
+      Techsy
       </Typography>
       <Divider />
       <List>
@@ -45,7 +45,7 @@ function DrawerAppBar(props) {
               sx={{
                 textAlign: "center",
                 "&:hover": {
-                  bgcolor: "darkgray",
+                  bgcolor: "#f77f00",
                   fontWeight: "semibold"
                 },
               }}
@@ -73,7 +73,7 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: "flex" , }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: "#f77f00" }}>
+      <AppBar component="nav" sx={{ backgroundColor: "#2b2d42" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -87,11 +87,19 @@ function DrawerAppBar(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1,color:"whitesmoke", display: { xs: "none", sm: "block" } }}
+            sx={{
+              flexGrow: 1,
+              color: "whitesmoke",
+              display: { xs: "none", sm: "block" },
+              textAlign: "left", 
+              fontFamily: "'Roboto', sans-serif", 
+              fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" },
+            }}
+F            
           >
-            TechHaven
+            Techsy
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center", color:"whitesmoke" }}>
+          <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center",  }}>
             {navItems.map((item) => (
               <IconButton
                 key={item.label}
@@ -100,9 +108,9 @@ function DrawerAppBar(props) {
                   color: "whitesmoke",
                   fontSize: "0.875rem",
                   textTransform: "uppercase",
-                  fontWeight: "bold",
+                  
                   "&:hover": {
-                    backgroundColor: "#71b2f3",
+                    color: "#f77f00",
                   },
                   mx: 1,
                 }}

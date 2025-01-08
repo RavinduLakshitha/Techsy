@@ -15,11 +15,13 @@ export default function OutlinedCard() {
 
   const card = (
     <React.Fragment>
+      {/* Card Content */}
       <CardContent>
         <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
           Total Price:
         </Typography>
       </CardContent>
+      {/* Card Actions (button area) */}
       <CardActions>
         {/* Add click handler to the button */}
         <Button
@@ -47,6 +49,8 @@ export default function OutlinedCard() {
   );
 
   return (
+    // Wrapping the card component in a Box for layout control
+
     <Box sx={{ minWidth: 275 }}>
       <Card variant="outlined">{card}</Card>
     </Box>

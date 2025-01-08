@@ -11,11 +11,16 @@ import {
   placeOrder,
   removeFromCart,
   updateCartQuantity,
-} from "../../redux/cartSlice";
-import Lapimg from "../../assets/laptop.jpg";
+} from "../redux/cartSlice";
+import Lapimg from "../assets/laptop.jpg";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { addOrders } from "../redux/orderSlice";
 
 export default function Cart() {
   const { cartItems, total } = useSelector((state) => state.cartReducer);
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -26,11 +31,16 @@ export default function Cart() {
   // function to remove item from cart
   const handleRemove = (id) => {
     dispatch(removeFromCart(id));
+    toast.success("Item Removed Succusessfully");
   };
+  
 
   // function to handle checkout
   const handleCheckout = async (order) => {
     dispatch(placeOrder(order));
+    toast.success("Place order Successfully");
+    dispatch(addOrders(order));
+    navigate('/orders')
   };
 
   // function to increment item quantity
@@ -199,7 +209,7 @@ export default function Cart() {
           handleCheckout({
             orderDate: new Date(),
             items: cartItems,
-            totalPrice: 0,
+            totalPrice: total,
           })
         }
       >

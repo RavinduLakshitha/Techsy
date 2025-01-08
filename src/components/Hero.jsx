@@ -11,17 +11,19 @@ const Hero = () => {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "80vh",
-          backgroundColor: "#edf2f4", 
-          paddingLeft: 4,
+          backgroundColor: "#edf2f4",
+          padding: { xs: 2, sm: 4 },
           borderRadius: 4,
           marginTop: 8,
+          flexDirection: { xs: "column", md: "row" },
         }}
       >
         {/* Left Part: Text Content */}
         <Box
           sx={{
             flex: 1,
-            padding: 4,
+            padding: { xs: 2, md: 4 },
+            textAlign: { xs: "center", md: "left" },
           }}
         >
           <Typography
@@ -31,6 +33,7 @@ const Hero = () => {
               color: "#333",
               marginBottom: 2,
               textAlign: "left",
+              fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" },
             }}
           >
             DISCOVER THE WORLD OF TECHSY!
@@ -40,7 +43,8 @@ const Hero = () => {
             sx={{
               color: "#666",
               marginBottom: 4,
-              textAlign: "justify",
+              textAlign: { xs: "center", md: "justify" },
+              fontSize: { xs: "0.9rem", sm: "1rem" },
             }}
           >
             Explore the ultimate destination for all your tech needs. Techsy, we
@@ -55,19 +59,21 @@ const Hero = () => {
             variant="contained"
             color="primary"
             sx={{
-                bgcolor: "#f77f00",
-                color: "whitesmoke",
-                alignItems: "left", 
-                padding: "8px 16px",
-                borderRadius: "8px",
-                 justifyContent: "flex-start",
-                "&:hover": {
-                  bgcolor: "#e85d04",
-                  color: "white",
-                },
-                boxShadow: "0px 4px 6px rgba(235, 235, 31, 0.1)",
-                fontWeight: "bold",
-              }}
+              bgcolor: "#f77f00",
+              color: "whitesmoke",
+              alignItems: "left",
+              padding: "8px 16px",
+              borderRadius: "8px",
+              justifyContent: "flex-start",
+              fontSize: { xs: "0.8rem", sm: "1rem" },
+              "&:hover": {
+                bgcolor: "#e85d04",
+                color: "white",
+              },
+              boxShadow: "0px 4px 6px rgba(235, 235, 31, 0.1)",
+              fontWeight: "bold",
+              display: { xs: "block" },
+            }}
           >
             Get Started
           </Button>
@@ -78,14 +84,17 @@ const Hero = () => {
           sx={{
             flex: 1,
             position: "relative",
-            height: { xs: "450px", md: "100%" },
+            height: { xs: "250px", sm: "300px", md: "100%" },
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <img
             src={lap}
             alt="Hero Section"
             style={{
-              width: "80%",
+              width: "90%",
               height: "auto",
               objectFit: "cover",
               borderRadius: "0 16px 16px 0",

@@ -8,10 +8,11 @@ import CardActions from "@mui/material/CardActions";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchProducts } from "../../redux/productSlice";
-import { addToCart, updateCartQuantity } from "../../redux/cartSlice";
-import Lapimg from "../../assets/laptop.jpg";
-import Hero from "../Hero";
+import { fetchProducts } from "../redux/productSlice";
+import { addToCart, updateCartQuantity } from "../redux/cartSlice";
+import Lapimg from "../assets/laptop.jpg";
+import Hero from "./Hero";
+import { toast } from "react-toastify";
 
 export default function ProductCard() {
   const { productsList } = useSelector((state) => state.productReducer);
@@ -38,6 +39,7 @@ export default function ProductCard() {
           quantity: newQuantity,
         })
       );
+      toast.success("Quantity Updated");
     } else {
       dispatch(
         addToCart({
@@ -47,6 +49,7 @@ export default function ProductCard() {
           quantity: 1,
         })
       );
+      toast.success("New item Added");
     }
   };
 

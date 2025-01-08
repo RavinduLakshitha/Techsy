@@ -8,7 +8,7 @@ Prerequisites
 •	
 Steps to Setup the Project Locally
 1.	Clone the Repository
-git clone https://github.com/RavinduLakshitha/Techsy.git
+git clone https://github.com/RavinduLakshitha/Techsy-Online-store.git
 2.	Navigate to the Project Directory
 cd techsy-ecommerce
 3.	Install Dependencies Run the following command to install the required packages:

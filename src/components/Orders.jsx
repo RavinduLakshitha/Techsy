@@ -1,58 +1,106 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Typography,
+  Button,
+  Card,
+  CardContent,
+  CardActions,
+} from "@mui/material";
 
-export default function OutlinedCard() {
-  // Function to handle order placement
-  const handlePlaceOrder = () => {
-    // Display order confirmation message
-    window.alert("Order placed successfully! Thank you for your purchase.");
+const Orders = () => {
+  const order = useSelector((state) => state.orderReducer.order);
+  const navigate = useNavigate();
+
+  const handleBackToHome = () => {
+    navigate("/");
   };
 
-  const card = (
-    <React.Fragment>
-      {/* Card Content */}
-      <CardContent>
-        <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
-          Total Price:
-        </Typography>
-      </CardContent>
-      {/* Card Actions (button area) */}
-      <CardActions>
-        {/* Add click handler to the button */}
-        <Button
-          sx={{
-            bgcolor: "#f77f00",
-            color: "whitesmoke",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "8px 16px",
-            borderRadius: "8px",
-            "&:hover": {
-              bgcolor: "darkgray",
-              color: "white",
-            },
-            boxShadow: "0px 4px 6px rgba(235, 235, 31, 0.1)",
-            fontWeight: "bold",
-          }}
-          size="small"
-          onClick={handlePlaceOrder}
-        >
-          Place an Order
-        </Button>
-      </CardActions>
-    </React.Fragment>
-  );
-
   return (
-    // Wrapping the card component in a Box for layout control
-
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
+    <Box
+      sx={{
+        padding: 4,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "80vh",
+      }}
+    >
+      {order ? (
+        <Card
+          sx={{
+            width: "100%",
+            maxWidth: 600,
+            backgroundColor: "#f8f9fa",
+            borderRadius: 2,
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+            padding: 3,
+          }}
+        >
+          <CardContent>
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: "bold", marginBottom: 2 }}
+            >
+              Order Summary
+            </Typography>
+            <Typography variant="body1" sx={{ marginBottom: 2 }}>
+              <strong>Total Price:</strong> ${order.totalPrice}
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                marginBottom: 1,
+                color: "#495057",
+              }}
+            >
+              Items:
+            </Typography>
+            {order.items.map((item, index) => (
+              <Box
+                key={index}
+                sx={{
+                  padding: 1,
+                  border: "1px solid #dee2e6",
+                  borderRadius: 2,
+                  marginBottom: 1,
+                  backgroundColor: "#ffffff",
+                }}
+              >
+                <Typography variant="body2">
+                  {index + 1}. {item.productName}
+                </Typography>
+              </Box>
+            ))}
+          </CardContent>
+          <CardActions>
+            <Button
+              variant="contained"
+              color="#f77f00"
+              onClick={handleBackToHome}
+              sx={{
+                marginTop: 2,
+                bgcolor: "#f77f00",
+                color: "white",
+                "&:hover": {
+                  bgcolor: "#e85d04",
+                },
+              }}
+            >
+              Back to Home
+            </Button>
+          </CardActions>
+        </Card>
+      ) : (
+        <Typography variant="h6" sx={{ color: "#6c757d" }}>
+          No orders found.
+        </Typography>
+      )}
     </Box>
   );
-}
+};
+
+export default Orders;

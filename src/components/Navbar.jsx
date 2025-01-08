@@ -23,7 +23,7 @@ const navItems = [
   { label: "About Us", path: "#" },
   { label: "Contact Us", path: "#" },
   { label: "Cart", path: "/cart" },
- 
+
 ];
 
 function DrawerAppBar(props) {

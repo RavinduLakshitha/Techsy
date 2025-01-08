@@ -27,7 +27,7 @@ o	Currently, the project operates with mock data for products and orders. Backen
 o	Redux store does not persist between page reloads. Implementing a solution like redux-persist is under consideration.
 3.	Toast Notifications:
 o	Notifications may stack excessively when triggered in quick succession. Limiting the maximum number of concurrent toasts is planned.
-4.	
+
 Limitations
 1.	Payment Processing:
 o	Payment gateway integration (e.g., Stripe, PayPal) is not yet implemented, limiting order finalization to a demo workflow.

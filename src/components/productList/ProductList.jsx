@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -7,29 +6,52 @@ import Button from "@mui/material/Button";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import Box from "@mui/material/Box";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchProducts } from "../../redux/productSlice";
+import { addToCart, updateCartQuantity } from "../../redux/cartSlice";
 
 export default function ProductCard() {
-  const [products, setProducts] = useState([]);
+  const { productsList } = useSelector((state) => state.productReducer);
+  const { cartItems } = useSelector((state) => state.cartReducer);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("http://localhost:5132/api/products");
-        const data = await response.json();
-        console.log(data);
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
-    fetchProducts();
-  }, []);
+  // function to handle adding/updating products in cart
+  const handleAddCart = (product) => {
+    const existingProduct = cartItems.find(
+      (cartItem) => cartItem.productId === product.id
+    );
+
+    if (existingProduct) {
+      const newQuantity = existingProduct.quantity + 1;
+
+      dispatch(
+        updateCartQuantity({
+          id: existingProduct.id,
+          quantity: newQuantity,
+        })
+      );
+    } else {
+      dispatch(
+        addToCart({
+          productId: product.id,
+          productName: product.name,
+          price: product.price,
+          quantity: 1,
+        })
+      );
+    }
+  };
 
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent:"center" , width: "1000px", alignItems:"center"}}>
-      {products.map((product) => (
-        <Card  key={product.id} sx={{ maxWidth: 345 }}>
+    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+      {productsList.map((product) => (
+        <Card key={product.id} sx={{ maxWidth: 345, height: 300 }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -51,39 +73,22 @@ export default function ProductCard() {
           </CardActionArea>
           <CardActions>
             <Button
-              sx={{ bgcolor: "#1976d2", color: "white" }}
               size="small"
               color="primary"
-              onClick={async () => {
-                try {
-                  const response = await fetch(
-                    "http://localhost:5132/api/Cart", 
-                    {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify({
-                        productId: product.id,
-                        productName: product.name,
-                        price: product.price,
-                        quantity: 1,
-                      }),
-                    }
-                  );
-
-                  if (response.ok) {
-                    const result = await response.json();
-                    console.log("Item added to cart:", result);
-                  } else {
-                    console.error(
-                      "Failed to add item to cart:",
-                      response.status
-                    );
-                  }
-                } catch (error) {
-                  console.error("Error adding item to cart:", error);
-                }
+              onClick={() => handleAddCart(product)}
+              sx={{
+                bgcolor: "#f77f00",
+                color: "whitesmoke",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "8px 16px", 
+                borderRadius: "8px",
+                '&:hover': { 
+                  bgcolor: "darkgray",
+                  color: "white"   
+                },
+                boxShadow: "0px 4px 6px rgba(235, 235, 31, 0.1)",
+                fontWeight: "bold", 
               }}
             >
               Add to Cart

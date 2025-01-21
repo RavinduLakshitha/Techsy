@@ -23,7 +23,6 @@ const navItems = [
   { label: "About Us", path: "#" },
   { label: "Contact Us", path: "#" },
   { label: "Cart", path: "/cart" },
-
 ];
 
 function DrawerAppBar(props) {
@@ -36,9 +35,15 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" ,  color:"#2b2d42"  , fontFamily:"sans-serif"}}>
-      <Typography variant="h6" sx={{ my: 2 ,fontFamily:"sans-serif", color:"#2b2d42" }}>
-      Techsy
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center", color: "#2b2d42", fontFamily: "sans-serif" }}
+    >
+      <Typography
+        variant="h6"
+        sx={{ my: 2, fontFamily: "sans-serif", color: "#2b2d42" }}
+      >
+        Techsy
       </Typography>
       <Divider />
       <List>
@@ -49,7 +54,7 @@ function DrawerAppBar(props) {
                 textAlign: "center",
                 "&:hover": {
                   bgcolor: "#f77f00",
-                  fontWeight: "semibold"
+                  fontWeight: "semibold",
                 },
               }}
               onClick={() => navigate(item.path)}
@@ -74,7 +79,7 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" , }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav" sx={{ backgroundColor: "#2b2d42" }}>
         <Toolbar>
@@ -83,7 +88,7 @@ function DrawerAppBar(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, color:"whitesmoke",  display: { sm: "none" } }}
+            sx={{ mr: 2, color: "whitesmoke", display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
@@ -94,15 +99,17 @@ function DrawerAppBar(props) {
               flexGrow: 1,
               color: "whitesmoke",
               display: { xs: "none", sm: "block" },
-              textAlign: "left", 
-              fontFamily: "'Roboto', sans-serif", 
+              textAlign: "left",
+              fontFamily: "'Roboto', sans-serif",
               fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" },
             }}
-F            
+            F
           >
             Techsy
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center",  }}>
+          <Box
+            sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center" }}
+          >
             {navItems.map((item) => (
               <IconButton
                 key={item.label}
@@ -111,7 +118,7 @@ F
                   color: "whitesmoke",
                   fontSize: "0.875rem",
                   textTransform: "uppercase",
-                  
+
                   "&:hover": {
                     color: "#f77f00",
                   },
@@ -142,7 +149,6 @@ F
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-
             },
           }}
         >

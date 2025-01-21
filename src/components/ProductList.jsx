@@ -54,94 +54,94 @@ export default function ProductCard() {
   };
 
   return (
-<div>
-  <div>
-    {/* Hero section that could include a banner or promotion */}
-    <Hero />
-  </div>
-  <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#edf2f4",
-        padding:"5px",
-      }}
-    >
+    <div>
+      <div>
+        {/* Hero section that could include a banner or promotion */}
+        <Hero />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#edf2f4",
+          padding: "5px",
+        }}
+      >
+        {/* Container to display products in a flex layout */}
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, padding: "5px" }}>
+          {productsList.map((product) => (
+            <Card
+              key={product.id}
+              sx={{
+                margin: "20px",
+                maxWidth: 350,
+                width: 300,
+                height: 400,
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 2,
+              }}
+            >
+              {/* Card action area that makes the card clickable */}
 
-      {/* Container to display products in a flex layout */}
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, padding:"5px",}}>
-        {productsList.map((product) => (
-          <Card
-            key={product.id}
-            sx={{
-            
-              margin:"20px",
-              maxWidth: 350, 
-              width:300,
-              height: 400, 
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 2,
-            }}
-          >
-            {/* Card action area that makes the card clickable */}
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={Lapimg}
+                  alt={product.name}
+                  sx={{
+                    objectFit: "cover", // Ensures the image covers the space without distortion
+                    width: "100%", // Makes the image responsive to the container width
+                    height: "200px", // Sets the height of the image
+                    display: "block", // Ensures it behaves as a block element
+                    margin: "0 auto", // Centers the image horizontally
+                    paddingTop: "20px",
+                  }}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {product.name}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                    Price: ${product.price}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                    Available Quantity: {product.quantityInStock}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
 
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image={Lapimg}
-                alt={product.name}
-                sx={{ objectFit: "cover", // Ensures the image covers the space without distortion
-                  width: "100%", // Makes the image responsive to the container width
-                  height: "200px", // Sets the height of the image
-                  display: "block", // Ensures it behaves as a block element
-                  margin: "0 auto", // Centers the image horizontally
-                  paddingTop: "20px", }}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {product.name}
-                </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  Price: ${product.price}
-                </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  Available Quantity: {product.quantityInStock}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-
-            {/* Card actions section for Add to Cart button */}
-            <CardActions>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleAddCart(product)}
-                sx={{
-                  bgcolor: "#f77f00",
-                  color: "whitesmoke",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "8px 16px",
-                  borderRadius: "8px",
-                  "&:hover": {
-                    bgcolor: "#e85d04",
-                    color: "white",
-                  },
-                  boxShadow: "0px 4px 6px rgba(235, 235, 31, 0.1)",
-                  fontWeight: "bold",
-                }}
-              >
-                Add to Cart
-              </Button>
-            </CardActions>
-          </Card>
-        ))}
-      </Box>
-    </div></div>
-
+              {/* Card actions section for Add to Cart button */}
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => handleAddCart(product)}
+                  sx={{
+                    bgcolor: "#f77f00",
+                    color: "whitesmoke",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "8px 16px",
+                    borderRadius: "8px",
+                    "&:hover": {
+                      bgcolor: "#e85d04",
+                      color: "white",
+                    },
+                    boxShadow: "0px 4px 6px rgba(235, 235, 31, 0.1)",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Add to Cart
+                </Button>
+              </CardActions>
+            </Card>
+          ))}
+        </Box>
+      </div>
+    </div>
   );
 }

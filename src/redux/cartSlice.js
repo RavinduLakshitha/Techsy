@@ -7,7 +7,7 @@ import {
     fetchCartItemsApi
 } from "../api"
 
-// request functions=======================================================================================
+// Async thunk actions for API requests
 export const fetchCartItems = createAsyncThunk(
     "cartItems/fetchCartItems",
     async () => {
@@ -78,7 +78,6 @@ export const placeOrder = createAsyncThunk(
         }
     }
 )
-// request functions=======================================================================================
 
 const initialState = {
     cartItems: [],
@@ -102,7 +101,7 @@ const cartSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // fetch Cart==================================================================
+            // Handle fetchCartItems actions
             .addCase(fetchCartItems.pending, (state) => {
                 state.isLoading = true
             })
@@ -116,7 +115,7 @@ const cartSlice = createSlice({
                 state.error = action.error?.message || "An error occurred"
             })
 
-            // add to Cart==================================================================
+            // Handle addToCart actions
             .addCase(addToCart.pending, (state) => {
                 state.isLoading = true
             })
@@ -130,7 +129,7 @@ const cartSlice = createSlice({
                 state.error = action.payload || "An error occurred"
             })
 
-            // update Cart Quantity============================================================
+            // Handle updateCartQuantity actions
             .addCase(updateCartQuantity.pending, (state) => {
                 state.isLoading = true
             })
@@ -149,7 +148,7 @@ const cartSlice = createSlice({
                 state.error = action.payload || "An error occurred"
             })
 
-            // remove from Cart================================================================
+            // Handle removeFromCart actions
             .addCase(removeFromCart.fulfilled, (state, action) => {
                 state.cartItems = state.cartItems.filter(
                     (item) => item.id !== action.payload
@@ -162,7 +161,7 @@ const cartSlice = createSlice({
                     "An error occurred while removing from cart"
             })
 
-            // place Order=====================================================================
+            // Handle placeOrder actions
             .addCase(placeOrder.fulfilled, (state) => {
                 state.cartItems = []
                 state.orderPlaced = true
